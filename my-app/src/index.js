@@ -4,7 +4,7 @@ import "./style.css";
 
 const ListItem = props => {
   return (
-    props.listItem.map(item => {
+    props.visibleItem.map(item => {
       return(
         <li id={item.id.toString()} key={item.id.toString()}>
           <span className={item.complete ? 'text complete' : 'text'}>{item.content}</span>
@@ -51,6 +51,11 @@ class TodoList extends React.Component {
           complete: false // complete set to true means complete, false means pending
         }),
         error: ''
+      }, () => {
+        this.setState({
+          visibleItems: [...this.state.listItems]
+        });
+        this.filterListItems(this.state.filter);
       });
     }
 
@@ -60,6 +65,11 @@ class TodoList extends React.Component {
     const itemId = e.target.parentNode.id; // could we use e.target.key instead of e.target.id?
     this.setState({
       listItems: this.state.listItems.filter(item => item.id !== itemId) // how to shorten this line, is destructing possible?
+    }, () => {
+      this.setState({
+        visibleItems: [...this.state.listItems]
+      });
+      this.filterListItems(this.state.filter);
     });
   }
 
@@ -73,6 +83,7 @@ class TodoList extends React.Component {
     this.setState({
       listItems: list
     });
+    this.filterListItems(this.state.filter);
   }
 
   handleFilter = e => {
@@ -85,8 +96,24 @@ class TodoList extends React.Component {
       this.filterListItems(filter);
     }
   }
-
-
+  filterListItems = filter => {
+    switch(filter){
+      case 'all':
+        this.setState({
+          visibleItems: [...this.state.listItems]
+        });
+        break;
+      case 'pending':
+        this.setState({
+          visibleItems: [...this.state.listItems].filter(item => !item.complete)
+        });
+        break;
+      case 'complete':
+        this.setState({
+          visibleItems: [...this.state.listItems].filter(item => item.complete)
+        });
+    }
+  }
 
   render() {
     return (
@@ -110,7 +137,7 @@ class TodoList extends React.Component {
         </div>
         <div className="list-wrapper">
           <ul className="list">
-            <ListItem listItem={this.state.listItems} checkToggle={this.handelItemCheckedStatus} delete={this.handelItemDelete} />
+            <ListItem visibleItem={this.state.visibleItems} checkToggle={this.handelItemCheckedStatus} delete={this.handelItemDelete} />
           </ul>
         </div>
       </React.Fragment>
