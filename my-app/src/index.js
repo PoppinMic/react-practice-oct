@@ -52,9 +52,9 @@ class TodoList extends React.Component {
         }),
         error: ''
       }, () => {
-        this.setState({
-          visibleItems: [...this.state.listItems]
-        });
+        // this.setState({
+        //   visibleItems: [...this.state.listItems]
+        // });
         this.filterListItems(this.state.filter);
       });
     }
@@ -66,10 +66,10 @@ class TodoList extends React.Component {
     this.setState({
       listItems: this.state.listItems.filter(item => item.id !== itemId) // how to shorten this line, is destructing possible?
     }, () => {
-      this.setState({
-        visibleItems: [...this.state.listItems]
-      });
-      this.filterListItems(this.state.filter);
+      // this.setState({
+      //   visibleItems: [...this.state.listItems]
+      // });
+      this.filterListItems(this.state.filter); // reused 3 times, better way? DONe
     });
   }
 
@@ -97,12 +97,10 @@ class TodoList extends React.Component {
     }
   }
   filterListItems = filter => {
+    this.setState({
+      visibleItems: [...this.state.listItems]
+    });
     switch(filter){
-      case 'all':
-        this.setState({
-          visibleItems: [...this.state.listItems]
-        });
-        break;
       case 'pending':
         this.setState({
           visibleItems: [...this.state.listItems].filter(item => !item.complete)
@@ -112,6 +110,7 @@ class TodoList extends React.Component {
         this.setState({
           visibleItems: [...this.state.listItems].filter(item => item.complete)
         });
+        break;
     }
   }
 
