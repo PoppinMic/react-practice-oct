@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+body {
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.todolist-wrapper {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  >div {
+    width: 100%;
+    margin: 0 0 2rem;
+  }
+  .user-input {
+    perspective: 200px;
+    input{
+      height: 2rem;     
+      width: calc(100% - 6rem);
+      box-sizing: border-box;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      padding: 1px 10px;
+      margin-right: 1rem;
+      &:focus{
+        outline-color: #5e9ed6;
+      }
+    }
+    button{
+      height: 2rem;
+      width: 5rem;
+      
+      background-color: #5e9ed6;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      white-space: nowrap;
+      padding: 0;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all .1s ease-in;
+      &:hover{
+        // transform: rotateX(-5deg);
+        text-indent: 1rem;
+        letter-spacing: 12px;
+        font-weight: 600;
+      }
+    }
+    label{
+      min-height: 1rem;
+      display: block;
+      color: red;
+    }
+  }
+
+  .filter-wrapper{
+    label{
+      margin-right: 1rem;
+    }
+  }
+ .list-wrapper{
+   width: 100%;
+    ul{
+      background-color: #eee;
+      padding: 2rem;
+      border-radius: 5px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      li{
+        list-style: none;
+        padding: 1rem 0;
+        border-bottom: 1px solid #5e9ed6;
+        &:last-child{
+          border-bottom: none;
+        }
+        span{
+          display: inline-block;
+          width: calc(100% - 80px);
+          line-height: 20px;
+        }
+        .complete{
+          text-decoration: line-through;
+        }
+        input{
+          width: 20px;
+          height: 20px;
+          box-sizing: border-box;
+          margin: 0 12px 0 0;
+          position: relative;
+        }
+        button{
+          padding: 0;
+          box-sizing: border-box;
+          border: none;
+          position: relative;
+          height: 20px;
+          width: 20px;
+          background-color: transparent;
+          cursor: pointer;
+          &:hover::after{
+            color: red;
+          }
+          &::after{
+            content: '✖';
+            color: #333;
+            font-size: 20px;
+            position: absolute;
+            top: -4px;
+            left: 0;
+            transition: color .1s ease-in;
+          }
+        }
+      }
+    }
+  }
+}

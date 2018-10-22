@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300");
+body {
+  color: #333;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.todolist-wrapper {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.todolist-wrapper > div {
+  width: 100%;
+  margin: 0 0 2rem;
+}
+.todolist-wrapper .user-input {
+  perspective: 200px;
+}
+.todolist-wrapper .user-input input {
+  height: 2rem;
+  width: calc(100% - 6rem);
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 1px 10px;
+  margin-right: 1rem;
+}
+.todolist-wrapper .user-input input:focus {
+  outline-color: #5e9ed6;
+}
+.todolist-wrapper .user-input button {
+  height: 2rem;
+  width: 5rem;
+  background-color: #5e9ed6;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  white-space: nowrap;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.1s ease-in;
+}
+.todolist-wrapper .user-input button:hover {
+  text-indent: 1rem;
+  letter-spacing: 12px;
+  font-weight: 600;
+}
+.todolist-wrapper .user-input label {
+  min-height: 1rem;
+  display: block;
+  color: red;
+}
+.todolist-wrapper .filter-wrapper label {
+  margin-right: 1rem;
+}
+.todolist-wrapper .list-wrapper {
+  width: 100%;
+}
+.todolist-wrapper .list-wrapper ul {
+  background-color: #eee;
+  padding: 2rem;
+  border-radius: 5px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.todolist-wrapper .list-wrapper ul li {
+  list-style: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid #5e9ed6;
+}
+.todolist-wrapper .list-wrapper ul li:last-child {
+  border-bottom: none;
+}
+.todolist-wrapper .list-wrapper ul li span {
+  display: inline-block;
+  width: calc(100% - 80px);
+  line-height: 20px;
+}
+.todolist-wrapper .list-wrapper ul li .complete {
+  text-decoration: line-through;
+}
+.todolist-wrapper .list-wrapper ul li input {
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  margin: 0 12px 0 0;
+  position: relative;
+}
+.todolist-wrapper .list-wrapper ul li button {
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.todolist-wrapper .list-wrapper ul li button:hover::after {
+  color: red;
+}
+.todolist-wrapper .list-wrapper ul li button::after {
+  content: "✖";
+  color: #333;
+  font-size: 20px;
+  position: absolute;
+  top: -4px;
+  left: 0;
+  transition: color 0.1s ease-in;
+}
+
+/*# sourceMappingURL=style.css.map */
